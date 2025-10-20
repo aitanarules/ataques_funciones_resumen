@@ -1,0 +1,381 @@
+
+texto_i = """
+CONTRATO DE COMPRAVENTA que celebran por una parte
+Doraemon en lo sucesivo EL VENDEDOR, y por la
+otra Nobita, en lo sucesivo EL COMPRADOR,
+al tenor de las siguientes declaraciones y cláusulas:
+DECLARACIONES
+I. Declara EL VENDEDOR ser legítimo propietario del bien descrito en este contrato, libre de gravámenes y al corriente de sus
+obligaciones.
+II. Declara EL COMPRADOR tener interés en adquirir dicho
+bien y contar con la capacidad legal y económica para hacerlo.
+CLÁUSULAS
+PRIMERA. Objeto.- EL VENDEDOR transfiere a favor de EL
+COMPRADOR la propiedad del siguiente bien: toda la fortuna.
+SEGUNDA. Precio.- EL COMPRADOR se obliga a pagar la cantidad de 1 millón de yenes, en moneda de curso legal, en
+la forma y plazos acordados por ambas partes.
+TERCERA. Entrega.- EL VENDEDOR entregará el bien objeto
+de este contrato en la UPV, junto con los documentos
+necesarios para acreditar la propiedad.
+CUARTA. Jurisdicción.- Para la interpretación y cumplimiento
+de este contrato, las partes se someten a las leyes y tribunales de
+Valencia
+Leído que fue el presente contrato, las partes lo firman por duplicado en VALENCIA, a la fecha 20/10/2025.
+EL VENDEDOR:
+EL COMPRADOR:
+"""
+
+variations_i = {
+ 'VALENCIA,': ['ciudad,', 'Valencia, España,', 'localidad,', 'Municipio de Valencia', 'Ciudad de Valencia,', 'Población de Valencia,', 'Capital de la Comunidad Valenciana,',
+        'Territorio valenciano,', 'Zona urbana de Valencia,', 'Área metropolitana de Valencia,'],
+ '20/10/2025.': ['20 de octubre de 2025.', '20/10/25.', 'fecha],', 'día 20 de octubre de 2025.',
+        'veinte de octubre de dos mil veinticinco.', '20 de octubre del año 2025.',
+        'fecha exacta 20/10/2025.', '20-10-2025.', '20/Octubre/2025.', 'fecha estipulada 20/10/2025.'],
+ 'DECLARACIONES':[
+        'manifestaciones', 'afirmaciones', 'expresiones', 'comunicaciones',
+        'proclamaciones', 'notificaciones', 'exposiciones', 'presentaciones',
+        'enunciados', 'declaraciones formales'],
+ 'SEGUNDA.': [
+        '2ª.', 'segunda cláusula', 'apartado segundo', 'segunda disposición',
+        'segundo artículo', 'cláusula número dos', 'apartado II', 'segundo ítem',
+        'segunda sección', 'segundo párrafo'
+    ],
+ 'DE': [
+        'del', 'perteneciente a', 'procedente de', 'originario de', 'derivado de',
+        'en relación con', 'correspondiente a', 'proveniente de', 'adscrito a', 'dependiente de'
+    ],
+ 'por': [
+        'a causa de', 'debido a', 'mediante', 'en virtud de', 'a través de', 
+        'a razón de', 'gracias a', 'con motivo de', 'según', 'considerando'
+    ],
+ 'Declara': [
+        'manifiesta', 'afirma', 'expone', 'proclama', 'notifica', 'indica',
+        'sostiene', 'certifica', 'ratifica', 'da a conocer'
+    ],
+ 'pagar':[
+        'abonar', 'satisfacer', 'liquidar', 'remunerar', 'entregar', 
+        'desembolsar', 'cumplir con el pago', 'saldar', 'hacer efectivo', 'realizar pago'
+    ],
+ 'gravámenes':  [
+        'impuestos', 'tasas', 'cargas', 'tributos', 'contribuciones',
+        'obligaciones fiscales', 'cargas financieras', 'tasaciones', 'aranceles', 'recargos'
+    ],
+ 'I.':  [
+        '1.', 'primera cláusula', 'apartado primero', 'artículo uno', 
+        'sección inicial', 'numeral I', 'primera disposición', 'párrafo primero',
+        'ítem inicial', 'primer inciso'
+    ],
+ 'parte': [
+        'sección', 'miembro', 'entidad', 'fragmento', 'segmento', 
+        'componente', 'apartado', 'división', 'instancia', 'factor'
+    ],
+ 'corriente': [
+        'regular', 'habitual', 'fluido', 'continuo', 'normal', 
+        'común', 'periódico', 'constante', 'recurrente', 'frecuente'
+    ],
+ 'libre': [
+        'sin restricciones', 'desocupado', 'independiente', 'autónomo', 
+        'sin limitaciones', 'disponible', 'desafectado', 'exento', 
+        'no condicionado', 'liberado'
+    ],
+ 'cumplimiento':[
+        'ejecución', 'observancia', 'realización', 'conformidad', 
+        'implementación', 'aplicación', 'desempeño', 'materialización', 
+        'cumplimentación', 'acatamiento'
+    ],
+ 'forma': [
+        'modo', 'manera', 'tipo', 'procedimiento', 'método', 
+        'configuración', 'estructura', 'modalidad', 'estilo', 'orientación'
+    ],
+ 'documentos': [
+        'papeles', 'expedientes', 'archivos', 'instrumentos', 
+        'actas', 'certificados', 'protocolos', 'registros', 
+        'escritos', 'soportes'
+    ],
+ 'Doraemon':  [
+        'personaje ficticio', 'robot gato', 'Doraemon (robot)', 
+        'figura animada', 'protagonista ficticio', 'ser imaginario', 
+        'ícono de animación', 'entidad de ficción', 'personaje de historieta', 
+        'robot de ficción'
+    ],
+ 'legı́timo': [
+        'legal', 'lícito', 'válido', 'legítimo', 'conforme a derecho', 
+        'autorizado', 'permitido', 'reglamentario', 'oficial', 'reconocido'
+    ],
+ 'necesarios': [
+        'indispensables', 'requeridos', 'obligatorios', 'imprescindibles', 
+        'fundamentales', 'esenciales', 'pertinentes', 'vitales', 'cruciales', 'inaplazables'
+    ],
+ 'VENDEDOR:': [
+        'Proponente:', 'Proveedor:', 'Parte vendedora:', 'Oferente:', 
+        'Suministrador:', 'Distribuidor:', 'Expendedor:', 'Comercializador:', 
+        'Responsable de la venta:', 'Entidad vendedora:'
+    ],
+ 'obligaciones.':[
+        'deberes', 'responsabilidades', 'compromisos', 'cargas', 
+        'tareas', 'facultades', 'funciones', 'atribuciones', 'imposiciones', 'constricciones'
+    ],
+ 'Objeto.-': [
+        'Finalidad.-', 'Propósito.-', 'Materia.-', 'Objetivo.-', 
+        'Fines.-', 'Designio.-', 'Contenido.-', 'Razonamiento.-', 
+        'Intención.-', 'Determinación.-'
+    ],
+ 'siguientes':  [
+        'posteriores', 'subsecuentes', 'enumerados', 'indicados', 
+        'mencionados', 'anexos', 'referidos', 'detallados', 'listados', 'presentes'
+    ],
+ 'CONTRATO': [
+        'Acuerdo', 'Pacto', 'Convenio', 'Instrumento', 'Acuerdo legal', 
+        'Compromiso contractual', 'Acta', 'Convención', 'Documento vinculante', 'Negocio jurídico'
+    ],
+ 'siguiente': ['posterior', 'que sigue', 'subsecuente'],
+ 'junto': ['acompañado', 'unido', 'adjunto'],
+ 'VENDEDOR': ['Proponente', 'Proveedor', 'Parte vendedora'],
+ 'moneda': ['divisa', 'dinero', 'efectivo'],
+ 'descrito': ['detallado', 'explicado', 'enumerado'],
+ 'dicho': ['mencionado', 'referido', 'indicado'],
+ 'tribunales': ['juzgados', 'cortes', 'instancias judiciales'],
+ 'la': ['el', 'las', 'lo'],
+ 'fue': ['ha sido', 'resultó', 'se constituyó'],
+ '1': ['uno', 'primero', '1º'],
+ 'bien:': ['activo:', 'objeto:', 'elemento:'],
+ 'Nobita,': ['personaje ficticio', 'Niño protagonista', 'Nobita (humano)'],
+ 'entregará': ['proporcionará', 'cederá', 'remitirá'],
+ 'transfiere': ['cede', 'traspasa', 'asigna'],
+ 'contar': ['disponer', 'poseer', 'tener'],
+ 'millón': ['1.000.000', 'millón de unidades', 'millón (cantidad)'],
+ 'CUARTA.': ['4ª.', 'cuarta cláusula', 'apartado cuarto'],
+ 'ser': ['existir', 'constituir', 'permanecer'],
+ 'sus': ['de él/ella', 'de ellos/ellas', 'propios'],
+ 'propietario': ['dueño', 'titular', 'poseedor'],
+ 'otra': ['diferente', 'distinta', 'adicional'],
+ 'adquirir': ['comprar', 'obtener', 'obtener en propiedad'],
+ 'ambas': ['las dos', 'tanto una como otra'],
+ 'contrato,': ['acuerdo,', 'pacto,', 'convenio,'],
+ 'y': ['e', 'además', 'así como'],
+ 'fortuna.': ['fortuna.', 'capital.', 'patrimonio.'],
+ 'Entrega.-': ['Suministro.-', 'Remisión.-', 'Entrega del bien.-'],
+ 'de': ['del', 'perteneciente a', 'procedente de'],
+ 'hacerlo.': ['realizarlo.', 'efectuarlo.', 'cumplirlo.'],
+ 'interés': ['curiosidad', 'beneficio', 'atención'],
+ 'II.': ['2.', 'segunda cláusula', 'apartado segundo'],
+ 'aplicable].': ['vigente].', 'correspondiente].'],
+ 'con': ['junto a', 'mediante', 'acompañado de'],
+ 'las': ['los', 'las mismas', 'aquellas'],
+ 'TERCERA.': ['3ª.', 'tercera cláusula', 'apartado tercero'],
+ 'se': ['él/ella', 'sí', 'ello'],
+ 'propiedad.': ['dominio.', 'posesión.', 'titularidad.'],
+ 'EL': ['La', 'Los', 'Lo'],
+ 'al': ['a el', 'hacia', 'en el'],
+ 'declaraciones': ['manifestaciones', 'afirmaciones', 'expresiones'],
+ 'sucesivo': ['posterior', 'continuo', 'subsecuente'],
+ 'cantidad': ['número', 'total', 'volumen'],
+ 'cláusulas:': ['artículos:', 'apartados:', 'secciones:'],
+ 'someten': ['se sujetan', 'aceptan', 'se subordinan'],
+ 'celebran': ['firman', 'suscriben', 'formalizan'],
+ 'firman': ['suscriben', 'ratifican', 'consignan'],
+ 'fecha': ['día', 'día exacto', 'momento'],
+ 'plazos': ['términos', 'periodos', 'vigencias'],
+ 'toda': ['entera', 'completa', 'total'],
+ 'partes.': ['entidades.', 'miembros.', 'componentes.'],
+ 'presente': ['actual', 'este', 'vigente'],
+ 'el': ['la', 'lo', 'los'],
+ 'Leı́do': ['Revisado', 'Examinado', 'Analizado'],
+ 'del': ['de el', 'del mismo', 'de la'],
+ 'acordados': ['establecidos', 'convenidos', 'determinados'],
+ 'curso': ['proceso', 'trayectoria', 'desarrollo'],
+ 'legal,': ['jurídico,', 'legítimo,', 'reglamentario,'],
+ 'capacidad': ['aptitud', 'facultad', 'habilidad'],
+ 'bien': ['activo', 'objeto', 'elemento'],
+ 'Para': ['Con el fin de', 'A fin de', 'Destinado a'],
+ 'acreditar': ['demostrar', 'probar', 'certificar'],
+ '[jurisdicción': ['[ámbito judicial', '[competencia legal'],
+ 'que': ['el cual', 'la cual', 'lo que'],
+ 'contrato': ['acuerdo', 'pacto', 'convenio'],
+ 'objeto': ['finalidad', 'propósito', 'materia'],
+ 'a': ['hasta', 'hacia', 'para'],
+ 'propiedad': ['dominio', 'posesión', 'titularidad'],
+ 'interpretación': ['explicación', 'lectura', 'análisis'],
+ 'este': ['este mismo', 'el presente', 'actual'],
+ 'UPV,': ['Universitat Politècnica de València,', 'UPV, España,', 'UPV (institución),'],
+ 'tenor': ['texto', 'contenido', 'redacción'],
+ 'VENDEDOR’,': ['Parte vendedora’,', 'Proveedor’,', 'Ofertante’,'],
+ 'COMPRADOR': ['Adquirente', 'Parte compradora', 'Cliente'],
+ 'legal': ['jurídico', 'legítimo', 'conforme a la ley'],
+ 'tener': ['poseer', 'contar con', 'disponer de'],
+ 'PRIMERA.': ['1ª.', 'primera cláusula', 'apartado primero'],
+ 'COMPRADOR,': ['Adquirente,', 'Parte compradora,', 'Cliente,'],
+ 'favor': ['beneficio', 'ventaja', 'interés'],
+ 'COMPRADOR:': ['Adquirente:', 'Parte compradora:', 'Cliente:'],
+ 'CLÁUSULAS': ['artículos', 'apartados', 'condiciones'],
+ 'partes': ['entidades', 'miembros', 'componentes'],
+ 'para': ['a fin de', 'con el propósito de', 'destinado a'],
+ 'lo': ['ello', 'el', 'la'],
+ 'yenes,': ['JPY,', 'moneda japonesa,', 'yen japonés,'],
+ 'COMPRAVENTA': ['venta', 'transacción', 'negocio'],
+ 'una': ['alguna', 'cierta', 'una sola'],
+ 'los': ['las', 'aquellos', 'estos'],
+ 'Precio.-': ['Valor.-', 'Importe.-', 'Costo.-'],
+ 'Jurisdicción.-': ['Competencia.-', 'Ámbito legal.-', 'Instancia.-'],
+ 'en': ['dentro de', 'sobre', 'dentro'],
+ 'económica': ['financiera', 'monetaria', 'mercantil'],
+ 'duplicado': ['copia', 'replica', 'réplica exacta'],
+ 'obliga': ['compromete', 'asume', 'incumbe'],
+ 'leyes': ['normas', 'reglamentos', 'disposiciones']
+}
+
+
+texto_l = """
+La inteligencia artificial se ha convertido en una herramienta
+transformadora en múltiples sectores. Desde la medicina, donde
+ayuda a la obtención diagnósticos más rápidos y precisos, hasta
+la educación, en la que puede actuar de asistente en el aprendizaje. Los algoritmos de IA aprenden de datos masivos y mejoran
+con la experiencia, imitando ciertos procesos humanos y optimizando tareas que antes requerı́an intervención directa. En la
+industria, la inteligencia artificial permite automatizar procesos,
+reducir errores y mejorar la eficiencia, mientras que en el ámbito
+financiero puede ayudar a detectar fraudes y predecir tendencias
+de mercado.
+Sin embargo, el desarrollo de estas teconologías plantea desafíos
+éticos y legales: la transparencia de sus decisiones, la protección
+de la privacidad de los datos y el impacto sobre el empleo son
+cuestiones críticas que requieren regulación y supervisión. La IA
+tiene el potencial de transformar la sociedad de maneras profundas, pero su implementación responsable es esencial. La regulación que permita el desarrollo manteniendo estas cuestiones éticas
+es competencia de las autoridades, suscribiendo el abajo firmante
+iniciativas que en este sentido se pudieran iniciar para aprovechar los beneficios de la IA sin comprometer los derechos ni la
+seguridad de las personas.
+FIRMA:
+"""
+
+variations_l = {
+ 'donde': ['en el que', 'en la cual', 'en que', 'en donde', 'en el cual', 'allí donde'],
+ 'su': ['de él/ella', 'de ellos/ellas', 'propio', 'propiedad de', 'perteneciente a', 'de su parte'],
+ 'cuestiones': ['asuntos', 'temas', 'problemas'],
+ 'eficiencia,': ['rendimiento,', 'productividad,', 'eficacia,', 'eficacia operativa,', 'capacidad productiva,'],
+ 'Desde': ['A partir de', 'Desde el momento de', 'Partiendo de'],
+ 'IA': ['inteligencia artificial', 'AI', 'sistemas inteligentes', 'inteligencia computacional', 'tecnología cognitiva'],
+ 'permite': ['facilita', 'autoriza', 'habilita'],
+ 'actuar': ['operar', 'proceder', 'intervenir'],
+ 'asistente': ['ayudante', 'auxiliar', 'coordinador', 'colaborador', 'ayudador', 'socio de apoyo'],
+ 'desafı́os': ['retos', 'dificultades', 'obstáculos'],
+ 'errores': ['fallos', 'equivocaciones', 'desaciertos', 'defectos', 'fallas', 'inexactitudes'],
+ 'algoritmos': ['procedimientos', 'fórmulas', 'rutinas'],
+ 'embargo,': ['sin embargo,', 'no obstante,', 'con todo,'],
+ 'autoridades,': ['instituciones,', 'entidades oficiales,', 'gobierno,'],
+ 'comprometer': ['involucrar', 'arriesgar', 'poner en riesgo'],
+ 'intervención': ['acción', 'participación', 'injerencia'],
+ 'ni': ['tampoco', 'y no', 'ninguno'],
+ 'mejoran': ['optimizar', 'perfeccionar', 'incrementan'],
+ 'beneficios': ['ventajas', 'ganancias', 'utilidades', 'réditos', 'provechos', 'resultados positivos'],
+ 'masivos': ['a gran escala', 'amplios', 'extensos'],
+ 'supervisión.': ['control.', 'vigilancia.', 'monitoreo.'],
+ 'humanos': ['personas', 'individuos', 'seres humanos', 'seres', 'entes racionales', 'agentes'],
+ 'tecnologı́as': ['tecnologías', 'herramientas', 'sistemas', 'dispositivos', 'innovaciones', 'plataformas'],
+ 'esencial.': ['fundamental.', 'crucial.', 'indispensable.'],
+ 'éticas': ['morales', 'principios', 'normas éticas', 'deontológicas', 'morales profesionales', 'rectas'],
+ 'la': ['el', 'las', 'lo'],
+ 'experiencia,': ['práctica,', 'vivencia,', 'trayectoria,'],
+ 'implementación': ['aplicación', 'puesta en marcha', 'ejecución'],
+ 'manteniendo': ['conservando', 'sosteniendo', 'preservando'],
+ 'procesos,': ['procedimientos,', 'operaciones,', 'métodos,', 'tareas,', 'flujos,', 'procesamientos,'],
+ 'Sin': ['Sin necesidad de', 'Excluyendo', 'A falta de'],
+ 'hasta': ['inclusive', 'como máximo', 'hasta el momento de'],
+ 'reducir': ['disminuir', 'minimizar', 'acortar'],
+ 'tendencias': ['patrones', 'direcciones', 'modas'],
+ 'iniciativas': ['propuestas', 'acciones', 'proyectos'],
+ 'sus': ['de él/ella', 'de ellos/ellas', 'propios'],
+ 'mercado.': ['sector.', 'industria.', 'ámbito comercial.'],
+ 'potencial': ['capacidad', 'posibilidad', 'aptitud'],
+ 'inteligencia': ['cognición', 'capacidad mental', 'razonamiento', 'ingenio', 'entendimiento', 'razón'],
+ 'transformadora': ['cambiadora', 'revolucionaria', 'innovadora'],
+ 'aprendizaje.': ['adquisición de conocimientos.', 'formación.', 'instrucción.', 'aprendizaje automático.', 'instrucción sistemática.'],
+ 'mejorar': ['optimizar', 'perfeccionar', 'incrementar'],
+ 'y': ['e', 'además', 'así como'],
+ 'transparencia': ['claridad', 'visibilidad', 'transparencia informativa', 'honestidad', 'apertura', 'visibilidad de procesos'],
+ 'son': ['están', 'resultan', 'constituyen'],
+ 'de': ['del', 'procedente de', 'perteneciente a'],
+ 'ha': ['ha tenido', 'posee', 'dispone de'],
+ 'antes': ['previamente', 'anteriormente', 'previo a'],
+ 'puede': ['es capaz de', 'tiene la capacidad de', 'le es posible'],
+ 'con': ['junto a', 'mediante', 'acompañado de'],
+ 'aprovechar': ['utilizar', 'explotar', 'sacar partido de'],
+ 'protección': ['defensa', 'resguardo', 'seguridad', 'cuidado', 'amparo', 'resguardo frente a riesgos'],
+ 'las': ['los', 'aquellas', 'estas'],
+ 'ayuda': ['asistencia', 'apoyo', 'cooperación'],
+ 'sin': ['sin necesidad de', 'carente de', 'ausente de'],
+ 'se': ['él/ella', 'ello', 'sí'],
+ 'imitando': ['copiando', 'replicando', 'simulando'],
+ 'FIRMA:': ['Signatura:', 'Autógrafo:', 'Suscripción:'],
+ 'competencia': ['habilidad', 'capacidad', 'aptitud'],
+ 'seguridad': ['protección', 'confianza', 'integridad', 'salvaguarda', 'estabilidad', 'protección frente a riesgos'],
+ 'precisos,': ['exactos,', 'correctos,', 'puntuales,'],
+ 'personas.': ['individuos.', 'humanos.', 'usuarios.'],
+ 'ámbito': ['entorno', 'campo', 'esfera'],
+ 'automatizar': ['robotizar', 'mecanizar', 'digitalizar', 'sistematizar', 'computarizar', 'digitalizar procesos'],
+ 'crı́ticas': ['críticas', 'evaluaciones', 'valoraciones'],
+ 'Los': ['Las', 'Estos', 'Aquellos'],
+ 'sectores.': ['áreas.', 'campos.', 'industrias.'],
+ 'artificial': ['sintético', 'no natural', 'ficticio'],
+ 'regulación': ['normativa', 'legislación', 'control'],
+ 'procesos': ['procedimientos', 'operaciones', 'métodos'],
+ 'convertido': ['transformado', 'cambiado', 'hecho'],
+ 'educación,': ['enseñanza,', 'formación,', 'instrucción,'],
+ 'medicina,': ['salud,', 'atención médica,', 'cuidado sanitario,'],
+ 'suscribiendo': ['firmando', 'adhiriendo', 'acordando'],
+ 'más': ['además', 'mayor', 'superior'],
+ 'empleo': ['trabajo', 'ocupación', 'labor'],
+ 'ciertos': ['algunos', 'determinados', 'específicos'],
+ 'tareas': ['funciones', 'actividades', 'labores', 'trabajos', 'operaciones', 'actividades específicas'],
+ 'obtención': ['adquisición', 'consecución', 'logro'],
+ 'detectar': ['identificar', 'reconocer', 'localizar'],
+ 'financiero': ['económico', 'monetario', 'bursátil'],
+ 'rápidos': ['veloces', 'ágiles', 'expeditos'],
+ 'En': ['Dentro de', 'En el marco de', 'Durante'],
+ 'decisiones,': ['resoluciones,', 'determinaciones,', 'juicios,', 'juicios de valor,', 'elecciones,', 'determinaciones racionales,'],
+ 'el': ['la', 'lo', 'los'],
+ 'ayudar': ['asistir', 'apoyar', 'facilitar'],
+ 'iniciar': ['comenzar', 'empezar', 'dar inicio a'],
+ 'datos': ['información', 'registros', 'hechos'],
+ 'múltiples': ['varios', 'diversos', 'numerosos'],
+ 'es': ['constituye', 'resulta', 'corresponde a'],
+ 'impacto': ['efecto', 'influencia', 'repercusiones', 'consecuencia', 'efecto colateral', 'resultado'],
+ 'herramienta': ['instrumento', 'recurso', 'medio'],
+ 'éticos': ['morales', 'principios éticos', 'normas de conducta'],
+ 'estas': ['estas mismas', 'las mencionadas', 'las presentes'],
+ 'abajo': ['inferior', 'más abajo', 'debajo'],
+ 'que': ['el cual', 'la cual', 'lo que'],
+ 'permita': ['facilite', 'autorice', 'habilite'],
+ 'La': ['El', 'Esta', 'Dicha'],
+ 'a': ['hacia', 'hasta', 'para'],
+ 'predecir': ['pronosticar', 'anticipar', 'estimar'],
+ 'industria,': ['sector,', 'mercado,', 'campo,', 'campo industrial,', 'sector económico,'],
+ 'este': ['este mismo', 'el presente', 'actual'],
+ 'requerı́an': ['necesiten', 'demanden', 'soliciten'],
+ 'firmante': ['suscriptor', 'signatario', 'autógrafo'],
+ 'privacidad': ['confidencialidad', 'protección de datos', 'intimidad', 'reserva', 'secreto', 'anonimato'],
+ 'sobre': ['acerca de', 'respecto a', 'en relación con'],
+ 'diagnósticos': ['evaluaciones', 'análisis', 'valoraciones'],
+ 'profundas,': ['intensas,', 'detalladas,', 'exhaustivas,'],
+ 'legales:': ['jurídicos:', 'normativos:', 'de derecho:'],
+ 'sociedad': ['comunidad', 'población', 'colectividad', 'entramado social', 'colectivo', 'grupo humano'],
+ 'directa.': ['inmediata.', 'personal.', 'frontal.'],
+ 'para': ['con el fin de', 'a fin de', 'destinado a'],
+ 'tiene': ['posee', 'cuenta con', 'dispone de'],
+ 'desarrollo': ['crecimiento', 'evolución', 'progreso'],
+ 'una': ['alguna', 'cierta', 'una sola'],
+ 'transformar': ['cambiar', 'modificar', 'convertir'],
+ 'sentido': ['significado', 'dirección', 'propósito'],
+ 'plantea': ['propone', 'presenta', 'sugiere'],
+ 'los': ['las', 'aquellos', 'estos'],
+ 'maneras': ['formas', 'modos', 'métodos'],
+ 'optimizando': ['mejorando', 'perfeccionando', 'incrementando'],
+ 'pero': ['sin embargo', 'no obstante', 'aunque'],
+ 'pudieran': ['podrían', 'ser capaces de', 'tuvieran la posibilidad de'],
+ 'en': ['dentro de', 'sobre', 'en el marco de'],
+ 'aprenden': ['adquieren conocimientos', 'asimilan', 'internalizan'],
+ 'requieren': ['necesitan', 'demandan', 'precisan'],
+ 'responsable': ['encargado', 'competente', 'obligado'],
+ 'fraudes': ['estafas', 'engaños', 'defraudaciones', 'trampas', 'delitos financieros', 'falsificaciones'],
+ 'mientras': ['durante', 'en tanto', 'al mismo tiempo que'],
+ 'derechos': ['privilegios', 'facultades', 'atribuciones']
+}
+
