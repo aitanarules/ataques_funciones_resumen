@@ -38,7 +38,15 @@ class Yuval:
         trunc_hash = full_hash[:self.hash_bytes]
         return trunc_hash.hex()
     
-    def generate_variations(self, base_message:str, max_variations: int, dic_variations:dict):
+    def generate_variations(self, base_message:str, max_variations: int, dic_variations:Dict[str, list]):
+        """
+        Método generador de variaciones.
+
+        Args:
+            - base_message: mensaje que hay que variar
+            - max_variations: número de modificaciones que hay que generar
+            - dic_variations: diccionario donde, para cada elemeneto de base_message.split() haya una lista de sinónimos
+        """
         from itertools import product
         words = base_message.split()
         variants_lists = [dic_variations.get(w, [w]) for w in words]
@@ -46,7 +54,7 @@ class Yuval:
 
         for i,combination in enumerate(product(*variants_lists)):
             texts.append((" ".join(combination)))
-            if i > max_variations:
+            if len(texts) >=max_variations:
                 return texts
 
 
@@ -100,7 +108,7 @@ class Yuval:
         
         print(f"Built hash table with {len(self.hash_table)} unique hashes")
         
-        # Step 3-6:
+        # Step 3:
         print(f"Searching for collision (expected around {t} attempts)...")
         
         illegitimate_variations = self.generate_variations(illegitimate_message, t, variations_i)
@@ -159,6 +167,7 @@ class Yuval:
         return hash1 == hash2
 
 
+
 if __name__ == "__main__":
 
     print("=" * 60)
@@ -166,7 +175,7 @@ if __name__ == "__main__":
     print("=" * 60)
     
     yuval = Yuval(
-        hash_bytes=5, 
+        hash_bytes=1, 
         timeout=60
     )
     

@@ -1,4 +1,6 @@
 
+
+
 texto_i = """
 CONTRATO DE COMPRAVENTA que celebran por una parte
 Doraemon en lo sucesivo EL VENDEDOR, y por la
@@ -26,7 +28,7 @@ EL COMPRADOR:
 """
 
 variations_i = {
- 'VALENCIA,': ['ciudad,', 'Valencia, España,', 'localidad,', 'Municipio de Valencia', 'Ciudad de Valencia,', 'Población de Valencia,', 'Capital de la Comunidad Valenciana,',
+'VALENCIA,': ['ciudad,', 'Valencia, España,', 'localidad,', 'Municipio de Valencia', 'Ciudad de Valencia,', 'Población de Valencia,', 'Capital de la Comunidad Valenciana,',
         'Territorio valenciano,', 'Zona urbana de Valencia,', 'Área metropolitana de Valencia,'],
  '20/10/2025.': ['20 de octubre de 2025.', '20/10/25.', 'fecha],', 'día 20 de octubre de 2025.',
         'veinte de octubre de dos mil veinticinco.', '20 de octubre del año 2025.',
@@ -35,99 +37,54 @@ variations_i = {
         'manifestaciones', 'afirmaciones', 'expresiones', 'comunicaciones',
         'proclamaciones', 'notificaciones', 'exposiciones', 'presentaciones',
         'enunciados', 'declaraciones formales'],
- 'SEGUNDA.': [
-        '2ª.', 'segunda cláusula', 'apartado segundo', 'segunda disposición',
+ 'SEGUNDA.': ['2ª.', 'segunda cláusula', 'apartado segundo', 'segunda disposición',
         'segundo artículo', 'cláusula número dos', 'apartado II', 'segundo ítem',
-        'segunda sección', 'segundo párrafo'
-    ],
- 'DE': [
-        'del', 'perteneciente a', 'procedente de', 'originario de', 'derivado de',
-        'en relación con', 'correspondiente a', 'proveniente de', 'adscrito a', 'dependiente de'
-    ],
- 'por': [
-        'a causa de', 'debido a', 'mediante', 'en virtud de', 'a través de', 
-        'a razón de', 'gracias a', 'con motivo de', 'según', 'considerando'
-    ],
- 'Declara': [
-        'manifiesta', 'afirma', 'expone', 'proclama', 'notifica', 'indica',
-        'sostiene', 'certifica', 'ratifica', 'da a conocer'
-    ],
- 'pagar':[
-        'abonar', 'satisfacer', 'liquidar', 'remunerar', 'entregar', 
-        'desembolsar', 'cumplir con el pago', 'saldar', 'hacer efectivo', 'realizar pago'
-    ],
- 'gravámenes':  [
-        'impuestos', 'tasas', 'cargas', 'tributos', 'contribuciones',
-        'obligaciones fiscales', 'cargas financieras', 'tasaciones', 'aranceles', 'recargos'
-    ],
- 'I.':  [
-        '1.', 'primera cláusula', 'apartado primero', 'artículo uno', 
-        'sección inicial', 'numeral I', 'primera disposición', 'párrafo primero',
-        'ítem inicial', 'primer inciso'
-    ],
- 'parte': [
-        'sección', 'miembro', 'entidad', 'fragmento', 'segmento', 
-        'componente', 'apartado', 'división', 'instancia', 'factor'
-    ],
- 'corriente': [
-        'regular', 'habitual', 'fluido', 'continuo', 'normal', 
-        'común', 'periódico', 'constante', 'recurrente', 'frecuente'
-    ],
- 'libre': [
-        'sin restricciones', 'desocupado', 'independiente', 'autónomo', 
+        'segunda sección', 'segundo párrafo'],
+ 'DE': ['del', 'perteneciente a', 'procedente de', 'originario de', 'derivado de', 'en relación con', 'correspondiente a', 'proveniente de', 'adscrito a', 'dependiente de'],
+ 'por': ['a causa de', 'debido a', 'mediante', 'en virtud de', 'a través de', 
+        'a razón de', 'gracias a', 'con motivo de', 'según', 'considerando'],
+ 'Declara': ['manifiesta', 'afirma', 'expone', 'proclama', 'notifica', 'indica',
+        'sostiene', 'certifica', 'ratifica', 'da a conocer'],
+ 'pagar':['abonar', 'satisfacer', 'liquidar', 'remunerar', 'entregar', 
+        'desembolsar', 'cumplir con el pago', 'saldar', 'hacer efectivo', 'realizar pago'],
+ 'gravámenes':  ['impuestos', 'tasas', 'cargas', 'tributos', 'contribuciones',
+        'obligaciones fiscales', 'cargas financieras', 'tasaciones', 'aranceles', 'recargos'],
+ 'I.':  ['1.', 'primera cláusula', 'apartado primero', 'artículo uno', 
+        'sección inicial', 'numeral I', 'primera disposición', 'párrafo primero','ítem inicial', 'primer inciso'],
+ 'parte': ['sección', 'miembro', 'entidad', 'fragmento', 'segmento', 
+        'componente', 'apartado', 'división', 'instancia', 'factor'],
+ 'corriente': ['regular', 'habitual', 'fluido', 'continuo', 'normal', 
+        'común', 'periódico', 'constante', 'recurrente', 'frecuente'],
+ 'libre': ['sin restricciones', 'desocupado', 'independiente', 'autónomo', 
         'sin limitaciones', 'disponible', 'desafectado', 'exento', 
-        'no condicionado', 'liberado'
-    ],
- 'cumplimiento':[
-        'ejecución', 'observancia', 'realización', 'conformidad', 
+        'no condicionado', 'liberado'],
+ 'cumplimiento':['ejecución', 'observancia', 'realización', 'conformidad', 
         'implementación', 'aplicación', 'desempeño', 'materialización', 
-        'cumplimentación', 'acatamiento'
-    ],
- 'forma': [
-        'modo', 'manera', 'tipo', 'procedimiento', 'método', 
-        'configuración', 'estructura', 'modalidad', 'estilo', 'orientación'
-    ],
- 'documentos': [
-        'papeles', 'expedientes', 'archivos', 'instrumentos', 
+        'cumplimentación', 'acatamiento'],
+ 'forma': ['modo', 'manera', 'tipo', 'procedimiento', 'método', 
+        'configuración', 'estructura', 'modalidad', 'estilo', 'orientación'],
+ 'documentos': ['papeles', 'expedientes', 'archivos', 'instrumentos', 
         'actas', 'certificados', 'protocolos', 'registros', 
-        'escritos', 'soportes'
-    ],
- 'Doraemon':  [
-        'personaje ficticio', 'robot gato', 'Doraemon (robot)', 
+        'escritos', 'soportes'],
+ 'Doraemon':  ['personaje ficticio', 'robot gato', 'Doraemon (robot)', 
         'figura animada', 'protagonista ficticio', 'ser imaginario', 
         'ícono de animación', 'entidad de ficción', 'personaje de historieta', 
-        'robot de ficción'
-    ],
- 'legı́timo': [
-        'legal', 'lícito', 'válido', 'legítimo', 'conforme a derecho', 
-        'autorizado', 'permitido', 'reglamentario', 'oficial', 'reconocido'
-    ],
- 'necesarios': [
-        'indispensables', 'requeridos', 'obligatorios', 'imprescindibles', 
-        'fundamentales', 'esenciales', 'pertinentes', 'vitales', 'cruciales', 'inaplazables'
-    ],
- 'VENDEDOR:': [
-        'Proponente:', 'Proveedor:', 'Parte vendedora:', 'Oferente:', 
+        'robot de ficción'],
+ 'legı́timo': ['legal', 'lícito', 'válido', 'legítimo', 'conforme a derecho', 
+        'autorizado', 'permitido', 'reglamentario', 'oficial', 'reconocido'],
+ 'necesarios': ['indispensables', 'requeridos', 'obligatorios', 'imprescindibles', 
+        'fundamentales', 'esenciales', 'pertinentes', 'vitales', 'cruciales', 'inaplazables'],
+ 'VENDEDOR:': ['Proponente:', 'Proveedor:', 'Parte vendedora:', 'Oferente:', 
         'Suministrador:', 'Distribuidor:', 'Expendedor:', 'Comercializador:', 
-        'Responsable de la venta:', 'Entidad vendedora:'
-    ],
- 'obligaciones.':[
-        'deberes', 'responsabilidades', 'compromisos', 'cargas', 
-        'tareas', 'facultades', 'funciones', 'atribuciones', 'imposiciones', 'constricciones'
-    ],
- 'Objeto.-': [
-        'Finalidad.-', 'Propósito.-', 'Materia.-', 'Objetivo.-', 
-        'Fines.-', 'Designio.-', 'Contenido.-', 'Razonamiento.-', 
-        'Intención.-', 'Determinación.-'
-    ],
- 'siguientes':  [
-        'posteriores', 'subsecuentes', 'enumerados', 'indicados', 
-        'mencionados', 'anexos', 'referidos', 'detallados', 'listados', 'presentes'
-    ],
- 'CONTRATO': [
-        'Acuerdo', 'Pacto', 'Convenio', 'Instrumento', 'Acuerdo legal', 
-        'Compromiso contractual', 'Acta', 'Convención', 'Documento vinculante', 'Negocio jurídico'
-    ],
+        'Responsable de la venta:', 'Entidad vendedora:'],
+ 'obligaciones.':['deberes', 'responsabilidades', 'compromisos', 'cargas', 
+        'tareas', 'facultades', 'funciones', 'atribuciones', 'imposiciones', 'constricciones'],
+ 'Objeto.-': ['Finalidad.-', 'Propósito.-', 'Materia.-', 'Objetivo.-', 
+        'Fines.-', 'Designio.-', 'Contenido.-', 'Razonamiento.-', 'Intención.-', 'Determinación.-'],
+ 'siguientes':  ['posteriores', 'subsecuentes', 'enumerados', 'indicados', 
+        'mencionados', 'anexos', 'referidos', 'detallados', 'listados', 'presentes'],
+ 'CONTRATO': ['Acuerdo', 'Pacto', 'Convenio', 'Instrumento', 'Acuerdo legal', 
+        'Compromiso contractual', 'Acta', 'Convención', 'Documento vinculante', 'Negocio jurídico'],
  'siguiente': ['posterior', 'que sigue', 'subsecuente'],
  'junto': ['acompañado', 'unido', 'adjunto'],
  'VENDEDOR': ['Proponente', 'Proveedor', 'Parte vendedora'],
@@ -378,4 +335,6 @@ variations_l = {
  'mientras': ['durante', 'en tanto', 'al mismo tiempo que'],
  'derechos': ['privilegios', 'facultades', 'atribuciones']
 }
+
+
 
